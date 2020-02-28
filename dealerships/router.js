@@ -12,4 +12,16 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+
+    Dealers.add(req.body)
+        .then(dealer => {
+            res.status(201).json(dealer)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({ message: 'Failed to add dealership' })
+        })
+})
+
 module.exports = router;

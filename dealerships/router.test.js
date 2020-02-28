@@ -29,4 +29,14 @@ describe('dealerships router', () => {
             expect(res.type).toMatch(/json/)
         })
     })
+    describe('POST /api/dealerships', () => {
+        it('should add a dealership into the database', async () => {
+            request(server).post('/api/dealerships').send({name: "SVM"})
+            request(server).post('/api/dealerships').send({name: "NPS"})
+
+            const dealers = await request(server).get('/api/dealerships')
+
+            expect(dealers.body).toHaveLength(2)
+        })
+    })
 })
