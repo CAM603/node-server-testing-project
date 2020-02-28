@@ -40,3 +40,10 @@
 ## Brands
 - id
 - name
+
+## Testing
+- functions: invoke the function with optional arguments => check return
+- endpoints: make a request with optional arguments => check the response
+
+## Model testing
+- `knex init`
