@@ -24,4 +24,21 @@ router.post('/', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+
+    Dealers.remove(id)
+        .then(deleted => {
+            if(deleted) {
+                res.status(200).json(deleted)
+            } else {
+                res.status(404).json({message: 'Failed to find dealership with given id'})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({ message: 'Failed to delete dealership' })
+        })
+})
+
 module.exports = router;

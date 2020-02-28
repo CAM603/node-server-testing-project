@@ -2,7 +2,8 @@ const db = require("../data/connection.js");
 
 module.exports = {
     all,
-    add
+    add,
+    remove
 };
 
 function all() {
@@ -22,4 +23,10 @@ function getById(id) {
     return db("dealerships")
         .where({id})
         .first()
+}
+
+function remove(id) {
+    return db("dealerships")
+        .where({id})
+        .del()
 }
